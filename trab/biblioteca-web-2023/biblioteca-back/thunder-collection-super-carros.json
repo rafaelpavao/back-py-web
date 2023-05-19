@@ -1,0 +1,1312 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "http://127.0.0.1:3333/api/vendedores/{vendedor_id}": {
+            "get": {
+                "summary": "Get Vendedor By Id",
+                "operationId": "get_vendedor_by_id_api_vendedores__vendedor_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vendedor Id",
+                            "type": "integer"
+                        },
+                        "name": "vendedor_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vendedor"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Update Vendedor",
+                "operationId": "update_vendedor_api_vendedores__vendedor_id__put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vendedor Id",
+                            "type": "integer"
+                        },
+                        "name": "vendedor_id",
+                        "in": "path"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VendedorCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vendedor"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete Vendedor By Id",
+                "operationId": "delete_vendedor_by_id_api_vendedores__vendedor_id__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vendedor Id",
+                            "type": "integer"
+                        },
+                        "name": "vendedor_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            }
+        },
+        "http://127.0.0.1:3333/api/vendedores": {
+            "get": {
+                "summary": "Get All Vendedores",
+                "operationId": "get_all_vendedores_api_vendedores_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Offset",
+                            "type": "integer",
+                            "default": 0
+                        },
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Limit",
+                            "type": "integer",
+                            "default": 10
+                        },
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedVendedor"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create Vendedor",
+                "operationId": "create_vendedor_api_vendedores_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VendedorCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vendedor"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            }
+        },
+        "http://127.0.0.1:3333/api/veiculo/{viculo_id}": {
+            "get": {
+                "summary": "Get Veiculo By Id",
+                "operationId": "get_veiculo_by_id_api_veiculo__viculo_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Veiculo Id",
+                            "type": "integer"
+                        },
+                        "name": "veiculo_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Veiculo"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            }
+        },
+        "http://127.0.0.1:3333/api/veiculos/{veiculo_id}": {
+            "get": {
+                "summary": "Get Veiculo By Id",
+                "operationId": "get_veiculo_by_id_api_veiculos__veiculo_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Veiculo Id",
+                            "type": "integer"
+                        },
+                        "name": "veiculo_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Veiculo"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Update Veiculo",
+                "operationId": "update_veiculo_api_veiculos__veiculo_id__put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Veiculo Id",
+                            "type": "integer"
+                        },
+                        "name": "veiculo_id",
+                        "in": "path"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VeiculoCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Veiculo"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete Veiculo By Id",
+                "operationId": "delete_veiculo_by_id_api_veiculos__veiculo_id__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Veiculo Id",
+                            "type": "integer"
+                        },
+                        "name": "veiculo_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            }
+        },
+        "http://127.0.0.1:3333/api/veiculos": {
+            "get": {
+                "summary": "Get All Veiculos",
+                "operationId": "get_all_veiculos_api_veiculos_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Offset",
+                            "type": "integer",
+                            "default": 0
+                        },
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Limit",
+                            "type": "integer",
+                            "default": 10
+                        },
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedVeiculo"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create Veiculo",
+                "operationId": "create_veiculo_api_veiculos_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VeiculoCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Veiculo"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            }
+        },
+        "http://127.0.0.1:3333/api/vendas": {
+            "get": {
+                "summary": "Get All Vendas",
+                "operationId": "get_all_vendas_api_vendas_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Offset",
+                            "type": "integer",
+                            "default": 0
+                        },
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Limit",
+                            "type": "integer",
+                            "default": 10
+                        },
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedVenda"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create Venda",
+                "operationId": "create_venda_api_vendas_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VendaCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Venda"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            }
+        },
+        "http://127.0.0.1:3333/api/vendas/{venda_id}": {
+            "get": {
+                "summary": "Get Venda By Id",
+                "operationId": "get_venda_by_id_api_vendas__venda_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Venda Id",
+                            "type": "integer"
+                        },
+                        "name": "venda_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Venda"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Update Venda",
+                "operationId": "update_venda_api_vendas__venda_id__put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Venda Id",
+                            "type": "integer"
+                        },
+                        "name": "venda_id",
+                        "in": "path"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VendaUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Venda"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            }
+        },
+        "http://127.0.0.1:3333/api/signup": {
+            "post": {
+                "tags": [
+                    "vendedor"
+                ],
+                "summary": "Create Vendedor Signup",
+                "operationId": "create_vendedor_signup_api_signup_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VendedorCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "http://127.0.0.1:3333/api/login": {
+            "post": {
+                "tags": [
+                    "vendedor"
+                ],
+                "summary": "User Login",
+                "operationId": "user_login_api_login_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VendedorLoginSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "http://127.0.0.1:3333/api/enderecos": {
+            "post": {
+                "summary": "Create Endereco",
+                "operationId": "create_endereco_api_enderecos_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EnderecoCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Endereco"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "JWTBearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Endereco": {
+                "title": "Endereco",
+                "required": [
+                    "cep",
+                    "rua",
+                    "numero",
+                    "complemento",
+                    "bairro",
+                    "id_cidade",
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "cep": {
+                        "title": "Cep",
+                        "type": "string"
+                    },
+                    "rua": {
+                        "title": "Rua",
+                        "type": "string"
+                    },
+                    "numero": {
+                        "title": "Numero",
+                        "type": "integer"
+                    },
+                    "complemento": {
+                        "title": "Complemento",
+                        "type": "string"
+                    },
+                    "bairro": {
+                        "title": "Bairro",
+                        "type": "string"
+                    },
+                    "id_cidade": {
+                        "title": "Id Cidade",
+                        "type": "integer"
+                    },
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    }
+                }
+            },
+            "EnderecoCreate": {
+                "title": "EnderecoCreate",
+                "required": [
+                    "cep",
+                    "rua",
+                    "numero",
+                    "complemento",
+                    "bairro",
+                    "id_cidade"
+                ],
+                "type": "object",
+                "properties": {
+                    "cep": {
+                        "title": "Cep",
+                        "type": "string"
+                    },
+                    "rua": {
+                        "title": "Rua",
+                        "type": "string"
+                    },
+                    "numero": {
+                        "title": "Numero",
+                        "type": "integer"
+                    },
+                    "complemento": {
+                        "title": "Complemento",
+                        "type": "string"
+                    },
+                    "bairro": {
+                        "title": "Bairro",
+                        "type": "string"
+                    },
+                    "id_cidade": {
+                        "title": "Id Cidade",
+                        "type": "integer"
+                    },
+                    "vendedor_ids": {
+                        "title": "Vendedore Ids",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "default": []
+                    }
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "PaginatedVeiculo": {
+                "title": "PaginatedVeiculo",
+                "required": [
+                    "limit",
+                    "offset",
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "limit": {
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "title": "Offset",
+                        "type": "integer"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Veiculo"
+                        }
+                    }
+                }
+            },
+            "PaginatedVenda": {
+                "title": "PaginatedVenda",
+                "required": [
+                    "limit",
+                    "offset",
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "limit": {
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "title": "Offset",
+                        "type": "integer"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Venda"
+                        }
+                    }
+                }
+            },
+            "PaginatedVendedor": {
+                "title": "PaginatedVendedor",
+                "required": [
+                    "limit",
+                    "offset",
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "limit": {
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "title": "Offset",
+                        "type": "integer"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Vendedor"
+                        }
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            },
+            "Veiculo": {
+                "title": "Veiculo",
+                "required": [
+                    "nome",
+                    "status",
+                    "id_cor",
+                    "id_valor",
+                    "id_gasto",
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "title": "Nome",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "Status",
+                        "type": "integer"
+                    },
+                    "id_cor": {
+                        "title": "Id Cor",
+                        "type": "integer"
+                    },
+                    "id_valor": {
+                        "title": "Id Valor",
+                        "type": "integer"
+                    },
+                    "id_gasto": {
+                        "title": "Id Gasto",
+                        "type": "integer"
+                    },
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    }
+                }
+            },
+            "VeiculoCreate": {
+                "title": "VeiculoCreate",
+                "required": [
+                    "nome",
+                    "status",
+                    "id_cor",
+                    "id_valor",
+                    "id_gasto"
+                ],
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "title": "Nome",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "Status",
+                        "type": "integer"
+                    },
+                    "id_cor": {
+                        "title": "Id Cor",
+                        "type": "integer"
+                    },
+                    "id_valor": {
+                        "title": "Id Valor",
+                        "type": "integer"
+                    },
+                    "id_gasto": {
+                        "title": "Id Gasto",
+                        "type": "integer"
+                    },
+                    "gasto_ids": {
+                        "title": "Gasto Ids",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "default": []
+                    }
+                }
+            },
+            "Venda": {
+                "title": "Venda",
+                "required": [
+                    "valor_venda",
+                    "forma_pagamento",
+                    "id_veiculo",
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "valor_venda": {
+                        "title": "Valor Venda",
+                        "type": "number"
+                    },
+                    "forma_pagamento": {
+                        "title": "Forma Pagamento",
+                        "type": "integer"
+                    },
+                    "id_veiculo": {
+                        "title": "Id Veiculo",
+                        "type": "integer"
+                    },
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "veiculos": {
+                        "title": "Veiculos",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Veiculo"
+                        },
+                        "default": []
+                    }
+                }
+            },
+            "VendaCreate": {
+                "title": "VendaCreate",
+                "required": [
+                    "valor_venda",
+                    "forma_pagamento",
+                    "id_veiculo"
+                ],
+                "type": "object",
+                "properties": {
+                    "valor_venda": {
+                        "title": "Valor Venda",
+                        "type": "number"
+                    },
+                    "forma_pagamento": {
+                        "title": "Forma Pagamento",
+                        "type": "integer"
+                    },
+                    "id_veiculo": {
+                        "title": "Id Veiculo",
+                        "type": "integer"
+                    },
+                    "veiculo_ids": {
+                        "title": "Veiculo Ids",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "default": []
+                    }
+                }
+            },
+            "VendaUpdate": {
+                "title": "VendaUpdate",
+                "required": [
+                    "valor_venda"
+                ],
+                "type": "object",
+                "properties": {
+                    "valor_venda": {
+                        "title": "Valor Venda",
+                        "type": "integer"
+                    }
+                }
+            },
+            "Vendedor": {
+                "title": "Vendedor",
+                "required": [
+                    "nome",
+                    "senha",
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "title": "Nome",
+                        "type": "string"
+                    },
+                    "senha": {
+                        "title": "Senha",
+                        "type": "string"
+                    },
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    }
+                }
+            },
+            "VendedorCreate": {
+                "title": "VendedorCreate",
+                "required": [
+                    "nome",
+                    "senha",
+                    "email",
+                    "comissao",
+                    "data_nascimento",
+                    "data_admissao",
+                    "cpf",
+                    "status",
+                    "id_endereco"
+                ],
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "title": "Nome",
+                        "type": "string"
+                    },
+                    "senha": {
+                        "title": "Senha",
+                        "type": "string"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "type": "string"
+                    },
+                    "comissao": {
+                        "title": "Comissao",
+                        "type": "integer"
+                    },
+                    "data_nascimento": {
+                        "title": "Data Nascimento",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "data_admissao": {
+                        "title": "Data Admissao",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "cpf": {
+                        "title": "Cpf",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "Status",
+                        "type": "integer"
+                    },
+                    "id_endereco": {
+                        "title": "Id Endereco",
+                        "type": "integer"
+                    }
+                }
+            },
+            "VendedorLoginSchema": {
+                "title": "VendedorLoginSchema",
+                "required": [
+                    "email",
+                    "senha"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "title": "Email",
+                        "type": "string"
+                    },
+                    "senha": {
+                        "title": "Senha",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "email": "x@x.com",
+                    "senha": "pass"
+                }
+            }
+        },
+        "securitySchemes": {
+            "JWTBearer": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

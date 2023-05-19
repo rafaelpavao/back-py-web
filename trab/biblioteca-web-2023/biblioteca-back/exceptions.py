@@ -43,6 +43,11 @@ class EnderecoAlreadyExistError(EnderecoException):
         self.status_code = 409
         self.detail = "ENDEREÇO_DUPLICADO"
 
+class EnderecoNotFoundError(EnderecoException):
+    def __init__(self):
+        self.status_code = 404
+        self.detail = "ENDEREÇO_NAO_ENCONTRADO"
+
 # class LivroNotFoundError(LivroException):
 #     def __init__(self):
 #         self.status_code = 404

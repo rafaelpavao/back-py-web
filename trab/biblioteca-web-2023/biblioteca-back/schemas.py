@@ -57,7 +57,6 @@ class EnderecoBase(BaseModel):
     id_cidade:int
 
 class EnderecoCreate(EnderecoBase):
-    vendedore_ids: List[int] = []
     pass
 
 class Endereco(EnderecoBase):

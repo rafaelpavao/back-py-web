@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base 
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine("mysql+mysqldb://root:12345@localhost:3306/superr-carros")
+engine = create_engine("mysql+mysqldb://root:@localhost:3306/superr_carros")
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)  
 Base = declarative_base()
 

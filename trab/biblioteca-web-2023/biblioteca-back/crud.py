@@ -1,9 +1,9 @@
 from datetime import date
 from sqlalchemy.orm import Session
-from exceptions import VeiculoAlreadyExistError, VeiculoNotFoundError, VeiculoNotFoundError, VendaNotFoundError, VendedorNotFoundError, VendedorAlreadyExistError
+from exceptions import VeiculoAlreadyExistError, VeiculoNotFoundError, VeiculoNotFoundError, VendaNotFoundError, VendedorNotFoundError, VendedorAlreadyExistError, EnderecoNotFoundError
 import models, schemas, bcrypt
 
-
+# endereco
 def create_endereco(db: Session, endereco: schemas.EnderecoCreate):
     db_endereco = models.Endereco(**endereco.dict())
     db.add(db_endereco)
@@ -11,6 +11,17 @@ def create_endereco(db: Session, endereco: schemas.EnderecoCreate):
     db.refresh(db_endereco)
     return db_endereco
 
+def delete_endereco_by_id(db: Session, endereco_id: int):
+    db_endereco = get_endereco_by_id(db, endereco_id)
+    db.delete(db_endereco)
+    db.commit()
+    return
+
+def get_endereco_by_id(db: Session, endereco_id: int):
+    db_endereco = db.query(models.Endereco).get(endereco_id)
+    if db_endereco is None:
+        raise EnderecoNotFoundError
+    return db_endereco
 
 # vendedor
 def get_vendedor_by_id(db: Session, vendedor_id: int):

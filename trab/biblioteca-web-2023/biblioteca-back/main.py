@@ -131,9 +131,25 @@ async def user_login(vendedor: schemas.VendedorLoginSchema = Body(...), db: Sess
         "error": "E-mail ou senha incorretos!"
     }
 
+
+# endereco
 @app.post("/api/enderecos", dependencies=[Depends(JWTBearer())], response_model=schemas.Endereco)
 def create_endereco(endereco: schemas.EnderecoCreate, db: Session = Depends(get_db)):
     try:
         return crud.create_endereco(db, endereco)
+    except EnderecoException as cie:
+        raise HTTPException(**cie.__dict__)
+
+@app.delete("/api/enderecos/{endereco_id}", dependencies=[Depends(JWTBearer())])
+def delete_endereco_by_id(endereco_id: int, db: Session = Depends(get_db)):
+    try:
+        return crud.delete_endereco_by_id(db, endereco_id)
+    except EnderecoException as cie:
+        raise HTTPException(**cie.__dict__)
+
+@app.get("/api/enderecos/{endereco_id}", dependencies=[Depends(JWTBearer())], response_model=schemas.Endereco)
+def get_endereco_by_id(endereco_id: int, db: Session = Depends(get_db)):
+    try:
+        return crud.get_endereco_by_id(db, endereco_id)
     except EnderecoException as cie:
         raise HTTPException(**cie.__dict__)
